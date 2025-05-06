@@ -1,0 +1,402 @@
+/* Thiết lập chung */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #a0d3f5;
+}
+
+/* Thanh menu trên cùng */
+.sidebar {
+    display: flex;
+    justify-content: space-around; /* Chia đều các mục menu */
+    align-items: center; /* Canh giữa các mục theo chiều dọc */
+    background-color: #2C3E50;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 100;
+}
+
+.sidebar .table {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Canh giữa nội dung trong mỗi mục */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 25%;  /* Mỗi tab chiếm 25% chiều rộng */
+    border-radius: 10px; /* Bo góc của các mục */
+}
+
+.sidebar .table:hover {
+    background-color: #34495E;
+}
+
+.sidebar .table.active {
+    background-color: #1abc9c; /* Màu xanh khi tab đang hoạt động */
+}
+
+.icon-sidebar {
+    color: #fff;
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.sidebar h2 {
+    color: #fff;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* Các tab (Chart, Sensor, LED, Win) */
+.container {
+    margin-top: 80px;  /* Khoảng cách từ thanh menu đến nội dung */
+    padding: 20px;
+}
+
+/* Các tab */
+.tab {
+    display: none;  /* Mặc định ẩn tất cả các tab */
+}
+
+.tab.active {
+    display: block;  /* Hiển thị tab đang hoạt động */
+}
+
+/* Các thông tin trong tab */
+.info1 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Mỗi ô Temperature, Humidity, Light chiếm 25% chiều rộng */
+/* Các ô thông tin (Temperature, Humidity, Light) */
+/* Các ô thông tin (Temperature, Humidity, Light) */
+.info-box {
+    border: 2px solid rgb(17, 17, 17); /* Đường viền màu đỏ */
+    background-color: #fff;
+    padding: 10px; /* Giảm padding để chiều cao không quá lớn */
+    border-radius: 200px; /* Làm các góc bo tròn thành hình bầu dục */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 30%; /* Mỗi ô chiếm khoảng 30% chiều rộng */
+    text-align: center;
+    margin-right: 10px; /* Khoảng cách giữa các ô */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Căn giữa nội dung */
+    height: auto; /* Chiều cao tự động thay đổi theo nội dung */
+}
+
+/* Đảm bảo không có margin bên phải của ô cuối cùng */
+.info-box:last-child {
+    margin-right: 0;
+}
+
+.title-container {
+    display: flex;
+    align-items: center; /* Canh giữa icon và chữ theo chiều dọc */
+    justify-content: center; /* Canh giữa icon và chữ theo chiều ngang */
+    margin-bottom: 5px; /* Khoảng cách dưới tiêu đề */
+}
+
+.icon {
+    color: #2C3E50;
+    font-size: 40px; /* Kích thước icon lớn */
+    margin-right: 8px; /* Khoảng cách giữa icon và chữ */
+}
+
+.info-box h2 {
+    margin: 0;
+    font-size: 30px; /* Kích thước tiêu đề */
+    font-weight: bold;
+}
+
+.info-box p {
+    font-size: 30px; /* Kích thước giá trị */
+    color: #333; /* Màu chữ cho giá trị */
+    font-weight: bold; /* Làm đậm chữ */
+}
+
+/* Tab Chart: Các ô thông tin như Temperature, Humidity, Light */
+.info1 {
+    display: flex;
+    justify-content: space-between;  /* Các ô sẽ xếp ngang */
+    margin-bottom: 20px;
+}
+
+/* Biểu đồ */
+/* Biểu đồ */
+.chart-toggle-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px; /* Tăng khoảng cách trên */
+}
+
+.chart-container {
+    width: 1800px;  /* Chiều rộng cố định là 800px */
+    height: 600px;  /* Chiều cao cố định là 600px */
+    margin-top: 20px;  /* Khoảng cách trên giữa biểu đồ và các ô thông tin */
+    display: flex;
+    justify-content: flex-start; /* Căn trái biểu đồ trong phần chứa */
+}
+
+.chart-container1 {
+    width: 100%;  /* Chiếm toàn bộ chiều rộng của container */
+    height: 100%;  /* Chiếm toàn bộ chiều cao của container */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ cho phần biểu đồ */
+    padding: 20px;
+    background-color: #fff;  /* Màu nền trắng cho phần chứa biểu đồ */
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;  /* Chiều cao của biểu đồ chiếm toàn bộ chiều cao của khung */
+}
+
+
+#tab2, #tab3, #tab4{
+    padding-top: 100px; /* Khoảng cách từ trên cùng */
+    overflow: auto; /* Đảm bảo nội dung không bị cắt */
+}
+
+/* Table Styles */
+/* Căn giữa tiêu đề */
+.tab h1 {
+    text-align: center; /* Căn giữa theo chiều ngang */
+    font-size: 24px; /* Kích thước chữ lớn hơn */
+    font-weight: bold; /* In đậm chữ */
+    color: #2C3E50; /* Màu chữ */
+    margin-bottom: 20px; /* Thêm khoảng cách dưới */
+}
+
+/* Căn giữa container tìm kiếm */
+.input-container, .search-container {
+    display: flex; /* Sử dụng flexbox */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+    margin-bottom: 20px; /* Khoảng cách dưới */
+}
+
+/* Định dạng ô input và nút */
+.input-container input, .search-container input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 200px; /* Chiều rộng của ô input */
+}
+
+button {
+    padding: 10px 15px;
+    margin: 0; /* Xóa khoảng cách dọc thừa */
+    background-color: #2C3E50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #34495E;
+    transform: translateY(-2px);
+}
+
+/* Căn chỉnh bảng */
+/* Định dạng bảng */
+table {
+    width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng */
+    border-collapse: collapse; /* Loại bỏ khoảng cách giữa các ô */
+    margin-top: 20px;
+    background-color: #fff; /* Nền trắng */
+    border-radius: 8px; /* Bo tròn các góc */
+    overflow: hidden; /* Đảm bảo bo góc đẹp */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+}
+
+/* Căn đều các cột */
+th, td {
+    width: auto; /* Đặt chiều rộng tự động chia đều */
+    padding: 12px;
+    text-align: center; /* Căn giữa nội dung */
+    font-size: 14px; /* Kích thước chữ */
+    color: #333; /* Màu chữ tối */
+    border: 1px solid #ddd; /* Viền mỏng cho các ô */
+}
+
+/* Định dạng tiêu đề cột */
+th {
+    background-color: #f7f7f7; /* Nền nhạt cho tiêu đề */
+    font-weight: bold;
+}
+
+/* Đặt chiều rộng cụ thể nếu muốn tùy chỉnh */
+.col-id {
+    width: 10%; /* Chiếm 10% chiều rộng bảng */
+}
+
+.col-timestamp {
+    width: 25%; /* Chiếm 25% chiều rộng bảng */
+}
+
+/* Tùy chỉnh các cột khác để chia đều */
+th:not(.col-id):not(.col-timestamp),
+td:not(.col-id):not(.col-timestamp) {
+    width: calc((100% - 35%) / 4); /* Tự động chia đều cho các cột còn lại */
+}
+
+/* Phân trang */
+/* Phân trang - căn giữa toàn bộ */
+.pagination-container, .pagination-container2 {
+    display: flex; /* Sử dụng flexbox */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 8px; /* Khoảng cách giữa các nút */
+    margin-top: 20px; /* Khoảng cách phía trên */
+}
+
+/* Định dạng chung cho nút phân trang */
+.pagination-container button,
+.pagination-container2 button {
+    padding: 8px 12px;
+    margin: 0; /* Xóa khoảng cách mặc định */
+    background-color: #f0f0f0; /* Màu nền mặc định */
+    color: #333; /* Màu chữ mặc định */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hiệu ứng khi hover */
+.pagination-container button:hover,
+.pagination-container2 button:hover {
+    background-color: #e0e0e0; /* Màu nền khi hover */
+}
+
+/* Định dạng nút đang chọn */
+.pagination-container button.active,
+.pagination-container2 button.active {
+    background-color: #6a1b9a; /* Màu tím */
+    color: white; /* Màu chữ trắng */
+    border-color: #6a1b9a; /* Viền trùng màu nền */
+    font-weight: bold; /* In đậm chữ */
+}
+
+
+/* Các công tắc bật/tắt */
+.toggle-switch-container {
+    display: flex;
+    flex-direction: column; /* Sắp xếp công tắc theo chiều dọc */
+    justify-content: space-between; /* Chia đều không gian giữa các công tắc */
+    width: 20%; /* Chiếm 25% chiều rộng của phần container */
+    height: 600px; /* Đảm bảo phần công tắc có chiều cao giống biểu đồ */
+    margin-left: 20px; /* Khoảng cách giữa biểu đồ và phần công tắc */
+}
+
+.toggle-switch {
+    border: 2px solid rgb(17, 17, 17);
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 200px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa các phần tử trong mỗi ô */
+    margin-bottom: 20px;
+    height: 150px; /* Chiều cao của mỗi ô công tắc */
+}
+
+.toggle-switch img {
+    width: 100px; /* Chiều rộng của icon */
+    height: 100px; /* Chiều cao của icon */
+    margin-bottom: 10px; /* Khoảng cách giữa icon và nút bấm */
+}
+
+.toggle-switch label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px; /* Khoảng cách giữa nút bấm và chữ */
+}
+
+.toggle-switch input {
+    margin-left: 10px;
+}
+
+/* Khoảng cách giữa các công tắc */
+.toggle-switch-container .toggle-switch {
+    margin: 0 0 20px 0;
+}
+
+#tab4 {
+    padding-top: 100px; /* Khoảng cách từ trên cùng */
+    overflow: auto; /* Đảm bảo nội dung không bị cắt */
+}
+.info2 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.chart-container2 {
+    width: 100%;
+    max-width: 1500px;  /* Đặt chiều rộng tối đa là 1500px */
+    height: 600px;      /* Đặt chiều cao là 800px */
+    display: flex;
+    justify-content: flex-start; /* Căn trái nội dung */
+    align-items: center;
+    background-color: #f7f7f7; /* Tùy chọn, bạn có thể thêm màu nền cho ô chứa biểu đồ */
+    border-radius: 10px; /* Thêm bo tròn góc nếu muốn */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nếu cần */
+    margin-left: 30px; /* Dịch phần biểu đồ sang phải 30px */
+}
+
+
+/* Cảnh báo trong Tab Win */
+/* Cảnh báo trong Tab Win */
+.chart-toggle-container {
+    display: flex;
+    justify-content: flex-start; /* Căn trái nội dung */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa biểu đồ và cảnh báo, đã chỉnh lại thành 30px */
+    margin-top: 20px; /* Khoảng cách phía trên */
+}
+
+/* Khung cho cảnh báo */
+.warning-light-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Đảm bảo ảnh và văn bản xếp theo chiều dọc */
+    padding: 20px; /* Thêm khoảng cách bên trong khung */
+    border: 2px solid rgb(17, 17, 17); /* Đường viền màu đỏ */
+    border-radius: 20px; /* Bo tròn các góc */
+    background-color: #f7f6f6; /* Màu nền nhạt cho khung cảnh báo */
+    width: 200px; /* Chiều rộng cố định cho khung cảnh báo */
+    height: 150px; /* Chiều cao cố định cho khung cảnh báo */
+}
+
+/* Khoảng cách giữa ảnh và văn bản */
+.warning-light img {
+    margin-bottom: 10px; /* Khoảng cách giữa ảnh và văn bản */
+}
+
+/* Định dạng cho văn bản cảnh báo */
+.warning-status {
+    font-size: 18px;
+    color: red;
+    font-weight: bold;
+}
+
